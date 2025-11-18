@@ -1,0 +1,217 @@
+{% load static %}
+{% include 'inc/header.html' %}
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-header-color" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    {% include "inc/menu.html" %}
+
+<!-- Modern Healthcare Header with Cardiology Focus - Full Screen Version -->
+<div class="container-fluid p-0 vh-100">
+    <div class="row g-0 h-100 align-items-center" style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);">
+        <!-- Left Side - Text Content -->
+        <div class="col-lg-5 p-5 p-lg-6 ps-lg-8 pe-lg-6 wow fadeIn">
+            <h1 class="display-3 text-white mb-4 fw-bold">Your Health Is Our Priority</h1>
+            <p class="text-white-50 mb-5 lead">Experience world-class healthcare with cutting-edge technology and compassionate care from our team of specialists.</p>
+
+            <div class="d-flex flex-wrap gap-3">
+                <a href="/#appointment-section" class="btn btn-light btn-lg px-4 py-3 rounded-pill">Book Appointment</a>
+                <a href="/#services" class="btn btn-outline-light btn-lg px-4 py-3 rounded-pill">Our Services</a>
+            </div>
+        </div>
+
+        <!-- Right Side - Cardiology Image Section -->
+        <div class="col-lg-7 h-100 position-relative wow fadeIn">
+            <div class="h-100 w-100 overflow-hidden">
+                <img class="img-fluid h-100 w-100" src="{% static 'img/abc.png' %}" alt="Cardiology Specialist" style="object-fit: cover; object-position: center;">
+                <div class="image-overlay"></div>
+            </div>
+
+            <div class="cardiology-info-box">
+                <h3 class="text-white display-5 fw-bold mb-3">Heart Care Specialists</h3>
+                <ul class="text-white-50 ps-3">
+                    <li class="mb-2">Advanced cardiac diagnostics</li>
+                    <li class="mb-2">Minimally invasive procedures</li>
+                    <li class="mb-2">24/7 emergency care</li>
+                    <li>Personalized rehabilitation</li>
+                </ul>
+                <a href="#cardiology" class="btn btn-outline-light mt-3 px-4 py-2 rounded-pill">Learn More</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Image overlay for better text contrast */
+    .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, rgba(30, 58, 138, 0.3) 0%, rgba(30, 58, 138, 0.7) 100%);
+    }
+
+    /* Cardiology info box styling */
+    .cardiology-info-box {
+        position: absolute;
+        bottom: 5rem;
+        left: 3rem;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        border-radius: 1rem;
+        max-width: 80%;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Button styling */
+    .btn-outline-light:hover {
+        color: #1e3a8a !important;
+        background: white !important;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+        .cardiology-info-box {
+            bottom: 2rem;
+            left: 1.5rem;
+            padding: 1.5rem;
+            max-width: 90%;
+        }
+
+        .image-overlay {
+            background: linear-gradient(90deg, rgba(30, 58, 138, 0.5) 0%, rgba(30, 58, 138, 0.8) 100%);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .container-fluid {
+            height: auto;
+            min-height: 100vh;
+        }
+
+        .cardiology-info-box {
+            position: relative;
+            bottom: auto;
+            left: auto;
+            max-width: 100%;
+            margin-top: -3rem;
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+
+        .row {
+            height: auto !important;
+        }
+    }
+</style>
+
+    <!-- Team Section Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <!-- Our Team -->
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p class="d-inline-block border rounded-pill py-1 px-4" style="border-color: #3b82f6 !important;">Our Team</p>
+                <h1>Meet Our Team</h1>
+            </div>
+            <div class="row g-4">
+                <!-- Team Member 1 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item position-relative rounded overflow-hidden">
+                        <img class="img-fluid" src="{% static 'team/ani.jpg' %}" alt="">
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>Animesh Mondal</h5>
+                            <!--<p class="text-header-color">Cardiologist</p>-->
+                        </div>
+                    </div>
+                </div>
+                <!-- Team Member 2 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="team-item position-relative rounded overflow-hidden">
+                        <img class="img-fluid" src="{% static 'team/puti.jpg' %}" alt="">
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>Priyambada Das</h5>
+                            <!--<p class="text-header-color">Neurologist</p>-->
+                        </div>
+                    </div>
+                </div>
+                <!-- Team Member 3 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="team-item position-relative rounded overflow-hidden">
+                        <img class="img-fluid" src="{% static 'team/peepp.jpg' %}" alt="">
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>Priyanka Banerjee</h5>
+                            <!--<p class="text-header-color">Pulmonologist</p>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mentor Team -->
+            <div class="text-center mx-auto mt-5 mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p class="d-inline-block border rounded-pill py-1 px-4" style="border-color: #3b82f6 !important;">Team Mentors</p>
+                <h1>Meet Our Team Mentor</h1>
+            </div>
+            <div class="row g-4">
+                <!-- Mentor 1 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item position-relative rounded overflow-hidden">
+                        <img class="img-fluid" src="{% static 'team/sir2.jpg' %}" alt="">
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>Chiranjib Dutta</h5>
+                            <p class="text-header-color">Head of the Department</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mentor 2 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="team-item position-relative rounded overflow-hidden">
+                        <img class="img-fluid" src="{% static 'team/sir3.jpg' %}" alt="">
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>Indranil Sarkar</h5>
+                            <p class="text-header-color">Mentor</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mentor 3 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="team-item position-relative rounded overflow-hidden">
+                        <img class="img-fluid" src="{% static 'team/sir1.jpg' %}" alt="">
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>Shirsendu Dutta</h5>
+                            <p class="text-header-color">Teacher</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team Section End -->
+
+    {% include "inc/footer.html" %}
+
+    <style>
+        .text-header-color {
+            color: #3b82f6;
+        }
+
+        .btn-header-color {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            border: none;
+        }
+
+        .btn-header-color:hover {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
+            color: white;
+        }
+    </style>
+</body>
+</html>

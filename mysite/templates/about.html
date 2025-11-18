@@ -1,0 +1,951 @@
+{% load static %}
+{% include 'inc/header.html' %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Klinik Heart</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #5e72e4;
+            --primary-light: #7e8ef1;
+            --primary-dark: #4a56d2;
+            --light: #f8f9fa;
+            --dark: #495057;
+            --hover: #aeb8fe;
+            --gray-100: #f1f3f5;
+            --gray-200: #e9ecef;
+            --accent: #4299e1;
+            --accent-hover: #90cdf4;
+            --gradient-start: #2b6cb0;
+            --gradient-end: #4299e1;
+            --heart-red: #ff1744;
+            --blue-light: #29b6f6;
+            --blue-lighter: #4fc3f7;
+            --ecg-blue: #0288d1;
+            --footer-bg: #1b2c51;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+        }
+
+        /* Navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 4%;
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            height: 80px;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .navbar-brand h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0;
+            letter-spacing: -0.02em;
+        }
+
+        .navbar-brand i {
+            font-size: 1.6rem;
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+
+        .navbar-links {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .nav-item {
+            margin: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-link {
+            color: var(--dark);
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            margin: 0 0.5rem;
+            background-color: var(--gray-100);
+            border-radius: 100px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.01em;
+            border: 2px solid transparent;
+        }
+
+        .nav-link:hover {
+            background-color: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            box-shadow: 0 4px 16px rgba(99, 179, 237, 0.3);
+        }
+
+        .nav-link.active {
+            background-color: var(--accent);
+            color: white;
+            font-weight: 600;
+            border-color: var(--accent);
+        }
+
+        .appointment-btn {
+            background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-left: 1.5rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(99, 179, 237, 0.3);
+            letter-spacing: 0.02em;
+            border: 2px solid transparent;
+        }
+
+        .appointment-btn:hover {
+            background: linear-gradient(45deg, var(--gradient-end), var(--gradient-start));
+            color: white;
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 179, 237, 0.35);
+        }
+
+        .appointment-btn i {
+            margin-left: 0.6rem;
+            font-size: 0.9rem;
+            transition: transform 0.25s ease;
+        }
+
+        .appointment-btn:hover i {
+            transform: translateX(4px);
+        }
+
+        .navbar-toggler {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 100px;
+            background-color: var(--gray-100);
+        }
+
+        .toggler-icon {
+            display: block;
+            width: 24px;
+            height: 2px;
+            margin: 5px 0;
+            background-color: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        /* Heart-Themed Modern Header with Updated Blue */
+        .header-section {
+            position: relative;
+            height: 600px;
+            background: linear-gradient(135deg, var(--blue-light), var(--blue-lighter));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            color: white;
+            z-index: 1;
+        }
+
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
+            z-index: 2;
+        }
+
+        .header-ecg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            z-index: 1;
+        }
+
+        .header-heart-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 350px;
+            color: var(--heart-red);
+            opacity: 0.2;
+            animation: pulse-heart 1.8s ease-in-out infinite;
+            text-shadow: 0 0 20px rgba(255, 23, 68, 0.5), 0 0 40px rgba(255, 23, 68, 0.3);
+            z-index: 1;
+        }
+
+        @keyframes pulse-heart {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.2; }
+            50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.3; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 0.2; }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 3;
+            padding: 20px;
+            max-width: 900px;
+        }
+
+        .header-content h1 {
+            font-size: calc(3rem + 1.8vw);
+            font-weight: 900;
+            margin-bottom: 25px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+
+        .header-content p {
+            font-size: calc(1.1rem + 0.3vw);
+            margin-bottom: 35px;
+            opacity: 0.95;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content .btn-cta {
+            background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(99, 179, 237, 0.4);
+        }
+
+        .header-content .btn-cta i {
+            margin-left: 10px;
+            font-size: 1rem;
+        }
+
+        .header-content .btn-cta:hover {
+            background: linear-gradient(45deg, var(--gradient-end), var(--gradient-start));
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 10px 30px rgba(99, 179, 237, 0.5);
+            color: white;
+        }
+
+        /* Heartbeat Animation */
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.05); }
+            35% { transform: scale(1); }
+            45% { transform: scale(1.07); }
+            55% { transform: scale(1); }
+            100% { transform: scale(1); }
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .about-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .about-content h2 {
+            font-size: calc(1.5rem + 1vw);
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            font-size: calc(0.9rem + 0.2vw);
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .about-read-more {
+            background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .about-read-more:hover {
+            background: linear-gradient(45deg, var(--gradient-end), var(--gradient-start));
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 179, 237, 0.35);
+            color: white;
+        }
+
+        /* Features Section (Why Choose Klinik Heart?) */
+        .features-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .features-section h2 {
+            font-size: calc(1.5rem + 1vw);
+            font-weight: 700;
+            color: var(--primary-dark);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-item i {
+            font-size: 2.5rem;
+            color: var(--heart-red);
+            margin-bottom: 20px;
+        }
+
+        .feature-item h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            color: var(--dark);
+        }
+
+        /* Why Visit Section */
+        .why-visit-section {
+            padding: 80px 0;
+            background-color: white;
+            position: relative;
+        }
+
+        .why-visit-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('{% static "img/heart-pattern.png" %}') repeat;
+            opacity: 0.05;
+            z-index: 1;
+        }
+
+        .why-visit-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .why-visit-section h2 {
+            font-size: calc(1.5rem + 1vw);
+            font-weight: 700;
+            color: var(--primary-dark);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .why-visit-item {
+            text-align: center;
+            transition: all 0.3s ease;
+            padding: 20px;
+        }
+
+        .why-visit-item:hover {
+            transform: scale(1.05);
+        }
+
+        .why-visit-item .icon-circle {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 5px 15px rgba(99, 179, 237, 0.3);
+            transition: background 0.3s ease;
+        }
+
+        .why-visit-item:hover .icon-circle {
+            background: linear-gradient(45deg, var(--gradient-end), var(--gradient-start));
+        }
+
+        .why-visit-item i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .why-visit-item h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .why-visit-item p {
+            font-size: 0.95rem;
+            color: var(--dark);
+        }
+
+        /* Footer Section */
+        .footer-section {
+            background-color: var(--footer-bg);
+            padding: 50px 0 20px;
+            color: white;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 30px;
+            padding: 0 15px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+        }
+
+        .footer-column .services-list li::before,
+        .footer-column .quick-links-list li::before {
+            content: ">";
+            margin-right: 8px;
+            color: var(--primary);
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--primary);
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: white;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+            color: var(--dark);
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        .newsletter-form button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .footer-bottom {
+            text-align: left;
+            padding: 20px 20px 0;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .navbar {
+                padding: 0 2%;
+            }
+
+            .appointment-btn {
+                margin-left: 1rem;
+                padding: 0.7rem 1.5rem;
+            }
+
+            .nav-link {
+                padding: 0.7rem 1.2rem;
+            }
+
+            .header-section {
+                height: 500px;
+            }
+
+            .header-heart-overlay {
+                font-size: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                height: auto;
+                padding: 1rem 4%;
+            }
+
+            .navbar-toggler {
+                display: block;
+            }
+
+            .navbar-links {
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                align-items: flex-start;
+                background-color: white;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .navbar-links.active {
+                max-height: 500px;
+                padding: 1rem 0;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                width: 100%;
+                padding: 0.5rem 0;
+                height: auto;
+            }
+
+            .nav-item {
+                width: 100%;
+                margin: 0;
+                height: auto;
+                padding: 0.5rem 1.5rem;
+            }
+
+            .nav-link {
+                display: block;
+                width: 100%;
+                margin: 0;
+                border-radius: 100px;
+                padding: 0.85rem 1.5rem;
+            }
+
+            .appointment-btn {
+                margin: 1rem 1.5rem;
+                display: inline-flex;
+                padding: 0.9rem 1.5rem;
+                width: calc(100% - 3rem);
+                justify-content: center;
+            }
+
+            .header-section {
+                height: 450px;
+            }
+
+            .header-content h1 {
+                font-size: calc(2rem + 1vw);
+            }
+
+            .header-content p {
+                font-size: calc(0.9rem + 0.2vw);
+            }
+
+            .header-heart-overlay {
+                font-size: 180px;
+            }
+
+            .about-section,
+            .features-section,
+            .why-visit-section {
+                padding: 50px 0;
+            }
+
+            .why-visit-item .icon-circle {
+                width: 80px;
+                height: 80px;
+            }
+
+            .why-visit-item i {
+                font-size: 1.8rem;
+            }
+
+            .footer-column {
+                flex: 100%;
+                text-align: center;
+            }
+
+            .newsletter-form {
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    {% include "inc/menu.html" %}
+
+    <!-- Heart-Themed Modern Header with Updated Blue -->
+    <section class="header-section">
+        <canvas class="header-ecg" id="ecg"></canvas>
+        <div class="header-overlay"></div>
+        <i class="fas fa-heart header-heart-overlay"></i>
+        <div class="header-content">
+            <h1>About Klinik Heart</h1>
+            <p>Leading the way in heart health with innovative prediction technology and expert cardiology care.</p>
+            <a href="/#appointment-section" class="btn-cta">Book a Consultation <i class="fas fa-plus"></i></a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6">
+                    <div class="about-image">
+                        <img src="{% static 'img/heart care.jpg' %}" alt="Heart Care">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-content">
+                        <h2>Our Mission for Heart Health</h2>
+                        <p>At Klinik Heart, we are dedicated to revolutionizing heart care through cutting-edge prediction technology and expert cardiology services. Our mission is to empower individuals with the knowledge and tools to prevent heart disease before it starts.</p>
+                        <p>With a team of world-class cardiologists and advanced machine learning algorithms, we analyze over 150 risk factors to provide personalized risk assessments with 94% accuracy. We combine medical expertise with technology to offer comprehensive care that prioritizes prevention, early detection, and long-term heart health.</p>
+                        <a href="/about/" class="about-read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section (Why Choose Klinik Heart?) -->
+    <section class="features-section">
+        <div class="container">
+            <h2>Why Choose Klinik Heart?</h2>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-item">
+                        <i class="fas fa-heartbeat"></i>
+                        <h4>Advanced Prediction</h4>
+                        <p>Our AI-driven system analyzes 150+ risk factors to detect heart disease risks with 94% accuracy, enabling early intervention.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-item">
+                        <i class="fas fa-user-md"></i>
+                        <h4>Expert Cardiologists</h4>
+                        <p>Our team of board-certified cardiologists provides personalized care backed by decades of experience.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-item">
+                        <i class="fas fa-clock"></i>
+                        <h4>24/7 Monitoring</h4>
+                        <p>Real-time biometric monitoring ensures continuous oversight of your heart health, day or night.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Visit Section -->
+    <section class="why-visit-section">
+        <div class="container">
+            <h2>Why Visit Klinik Heart?</h2>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="why-visit-item">
+                        <div class="icon-circle">
+                            <i class="fas fa-stethoscope"></i>
+                        </div>
+                        <h4>Personalized Risk Assessment</h4>
+                        <p>Access our advanced heart disease prediction tool to understand your unique risk factors and take proactive steps.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="why-visit-item">
+                        <div class="icon-circle">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h4>Easy Appointment Booking</h4>
+                        <p>Schedule consultations with top cardiologists quickly and conveniently through our user-friendly platform.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="why-visit-item">
+                        <div class="icon-circle">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <h4>Comprehensive Heart Health Resources</h4>
+                        <p>Explore expert advice, lifestyle tips, and the latest research to stay informed and protect your heart.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer-section">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Address</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> 157/F, Nilgiri Rd, Sahid Colony,<br>Panihati, West Bengal 700114</p>
+                    <p><i class="fas fa-phone"></i> +91 1234567890</p>
+                    <p><i class="fas fa-envelope"></i> info@klinikheart.com</p>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul class="services-list">
+                    <li><a href="#services" style="text-decoration: none;">Cardiovascular Risk Assessment</a></li>
+                    <li><a href="#services" style="text-decoration: none;">Heart Attack Prevention</a></li>
+                    <li><a href="#services" style="text-decoration: none;">Cardiovascular Screening</a></li>
+                    <li><a href="#services" style="text-decoration: none;">Peripheral Artery Disease Care</a></li>
+                    <li><a href="#services" style="text-decoration: none;">Cardiac Rehabilitation</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="quick-links-list">
+                    <li><a href="/about/" style="text-decoration: none;">About Us</a></li>
+                    <li><a href="/predict/" style="text-decoration: none;">Predict</a></li>
+                    <li><a href="/ourteam/" style="text-decoration: none;">Our Team</a></li>
+                    <li><a href="/contact/" style="text-decoration: none;">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter for the latest updates on heart health.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email">
+                    <button type="submit">SignUp</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© Heart Klinik, All Right Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Toggle mobile menu
+        document.getElementById('navbarToggler').addEventListener('click', function () {
+            this.classList.toggle('active');
+            document.getElementById('navbarLinks').classList.toggle('active');
+
+            const icons = this.querySelectorAll('.toggler-icon');
+            if (this.classList.contains('active')) {
+                icons[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                icons[1].style.opacity = '0';
+                icons[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+            } else {
+                icons[0].style.transform = 'none';
+                icons[1].style.opacity = '1';
+                icons[2].style.transform = 'none';
+            }
+        });
+
+        // Highlight active link
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function setActiveLink() {
+            const currentPath = window.location.pathname;
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentPath ||
+                    (currentPath === '/' && link.getAttribute('href') === '/') ||
+                    (link.getAttribute('href') !== '/' && currentPath.startsWith(link.getAttribute('href')))) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        setActiveLink();
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                navLinks.forEach(item => item.classList.remove('active'));
+                this.classList.add('active');
+
+                const toggler = document.getElementById('navbarToggler');
+                if (toggler.classList.contains('active')) {
+                    toggler.click();
+                }
+            });
+        });
+
+        // ECG Animation
+        const canvas = document.getElementById('ecg');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = 100;
+
+        let x = 0;
+        let y = canvas.height / 2;
+        const speed = 2;
+        const amplitude = 20;
+        const frequency = 0.05;
+        let time = 0;
+
+        function drawECG() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+            ctx.strokeStyle = 'rgba(2, 136, 209, 0.8)';
+            ctx.lineWidth = 2;
+
+            for (let i = 0; i < canvas.width; i++) {
+                const pulse = i % 100 < 20 ? Math.sin(i * 0.3) * 30 : 0;
+                const yPos = canvas.height / 2 - (Math.sin(i * frequency + time) * amplitude + pulse);
+                ctx.lineTo(i, yPos);
+            }
+
+            ctx.stroke();
+            time += 0.1;
+            x += speed;
+            if (x > canvas.width) x = 0;
+            requestAnimationFrame(drawECG);
+        }
+
+        drawECG();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = 100;
+        });
+    </script>
+</body>
+</html>

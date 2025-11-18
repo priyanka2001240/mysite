@@ -1,0 +1,609 @@
+{% load static %}
+{% include 'inc/header.html' %}
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    {% include "inc/menu.html" %}
+
+<!-- Compact Cardiology Header - Full Screen -->
+<div class="container-fluid p-0 vh-100 position-relative overflow-hidden" style="background: linear-gradient(135deg, #0a2463, #3e92cc);">
+
+    <!-- Background Pattern -->
+    <div class="position-absolute w-100 h-100" style="background: url('{% static "img/heart-pattern.png" %}') repeat; opacity: 0.05; z-index: 1;"></div>
+
+    <div class="row g-0 h-100 align-items-center position-relative z-index-2 mx-0">
+        <!-- Left Content - Compact Layout -->
+        <div class="col-lg-6 p-4 p-md-5 pe-lg-4 ps-lg-5">
+            <!-- Badge -->
+            <span class="badge rounded-pill bg-white text-primary mb-3 shadow-sm pulse-animate">
+                <i class="fas fa-heartbeat me-2"></i> Advanced Cardiology
+            </span>
+
+            <!-- Main Heading -->
+            <h1 class="text-white mb-3" style="font-size: calc(1.5rem + 1.5vw); line-height: 1.3;">
+                <span class="text-white">Predict. Prevent.</span><br>
+                <span class="text-warning heartbeat">Protect</span> Your Heart Health
+            </h1>
+
+            <!-- Description -->
+            <p class="text-light mb-4" style="font-size: calc(0.9rem + 0.3vw); opacity: 0.9; max-width: 95%;">
+                Our heart disease prediction system combined with expert cardiology care gives you the most comprehensive cardiac health assessment available.
+            </p>
+
+            <!-- Compact Stats Row -->
+            <div class="row g-2 g-md-3 mb-4">
+                <div class="col-4">
+                    <div class="bg-primary bg-opacity-25 rounded-3 p-2 text-center h-100">
+                        <h3 class="stat-value text-white mb-1" data-target="87" style="font-size: calc(1.2rem + 0.8vw);">0%</h3>
+                        <p class="stat-label text-white-50 mb-0" style="font-size: calc(0.6rem + 0.3vw);">Accuracy</p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="bg-danger bg-opacity-25 rounded-3 p-2 text-center h-100">
+                        <h3 class="stat-value text-white mb-1" data-target="24" style="font-size: calc(1.2rem + 0.8vw);">0</h3>
+                        <p class="stat-label text-white-50 mb-0" style="font-size: calc(0.6rem + 0.3vw);">Monitoring</p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="bg-success bg-opacity-25 rounded-3 p-2 text-center h-100">
+                        <h3 class="stat-value text-white mb-1" data-target="50" style="font-size: calc(1.2rem + 0.8vw);">0K+</h3>
+                        <p class="stat-label text-white-50 mb-0" style="font-size: calc(0.6rem + 0.3vw);">Lives</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compact Buttons -->
+            <div class="d-flex flex-wrap gap-2">
+                <a href="/predict/" class="btn btn-outline-light rounded-pill px-3 px-md-4 py-2 d-flex align-items-center hover-scale" style="font-size: calc(0.8rem + 0.2vw);">
+                    <i class="fas fa-heart me-2"></i> Heart Check
+                </a>
+            </div>
+        </div>
+
+        <!-- Right Carousel - Compact -->
+        <div class="col-lg-6 h-100 d-flex align-items-center">
+            <div class="owl-carousel header-carousel h-100 w-100 rounded-start-lg overflow-hidden">
+                <div class="owl-carousel-item h-100 position-relative">
+                    <img class="img-fluid h-100 w-100" src="{% static 'img/cardiac-care.jpg' %}" alt="Cardiac Care" style="object-fit: cover; object-position: center;">
+                    <div class="position-absolute bottom-0 start-0 end-0 p-3" style="background: rgba(0,0,0,0.6);">
+                        <h3 class="text-white mb-1" style="font-size: calc(1rem + 0.5vw);">Cardiac Care</h3>
+                        <p class="text-white-50 mb-2" style="font-size: calc(0.7rem + 0.2vw);">Advanced diagnostics</p>
+                    </div>
+                </div>
+                <div class="owl-carousel-item h-100 position-relative">
+                    <img class="img-fluid h-100 w-100" src="{% static 'img/heart-scan.jpg' %}" alt="Heart Scan" style="object-fit: cover; object-position: center;">
+                    <div class="position-absolute bottom-0 start-0 end-0 p-3" style="background: rgba(0,0,0,0.6);">
+                        <h3 class="text-white mb-1" style="font-size: calc(1rem + 0.5vw);">Heart Disease Prediction</h3>
+                        <p class="text-white-50 mb-2" style="font-size: calc(0.7rem + 0.2vw);">Early detection</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ECG Line -->
+    <div class="position-absolute bottom-0 start-0 w-100" style="height: 40px; overflow: hidden;">
+        <svg viewBox="0 0 500 40" preserveAspectRatio="none" class="w-100 h-100">
+            <path class="ecg-path" d="M0,20 L30,20 L35,10 L45,30 L55,5 L65,25 L75,15 L85,20 L500,20" stroke="#FF5252" stroke-width="2" fill="none" stroke-dasharray="500" stroke-dashoffset="500"/>
+        </svg>
+    </div>
+</div>
+
+<style>
+    /* Core Styles */
+    .vh-100 { min-height: 100vh; }
+    .z-index-2 { z-index: 2; }
+
+    /* Heartbeat Animation - Fixed */
+    .heartbeat {
+        display: inline-block;
+        animation: heartbeat 1.5s ease-in-out infinite;
+    }
+
+    @keyframes heartbeat {
+        0% { transform: scale(1); }
+        25% { transform: scale(1.1); }
+        35% { transform: scale(1); }
+        45% { transform: scale(1.2); }
+        55% { transform: scale(1); }
+        100% { transform: scale(1); }
+    }
+
+    /* Pulse Badge */
+    .pulse-animate {
+        animation: pulse-badge 2s infinite;
+    }
+
+    @keyframes pulse-badge {
+        0% { box-shadow: 0 0 0 0 rgba(255,105,120,0.7); }
+        70% { box-shadow: 0 0 0 8px rgba(255,105,120,0); }
+        100% { box-shadow: 0 0 0 0 rgba(255,105,120,0); }
+    }
+
+    /* Hover Effects */
+    .hover-scale {
+        transition: all 0.3s ease;
+    }
+
+    .hover-scale:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Carousel */
+    .header-carousel,
+    .owl-carousel-item {
+        height: 100%;
+    }
+
+    /* ECG Animation */
+    @keyframes ecg {
+        0% { stroke-dashoffset: 500; }
+        100% { stroke-dashoffset: 0; }
+    }
+
+    .ecg-path {
+        animation: ecg 6s linear infinite;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+        .vh-100 { height: auto; min-height: 100vh; padding-bottom: 40px; }
+        .header-carousel { height: 300px; margin-top: 30px; }
+    }
+
+    /* Appointment Button Style */
+    .appointment-btn {
+        background: linear-gradient(45deg, #2b6cb0, #4299e1);
+        color: white;
+        border: none;
+        transition: all 0.3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .appointment-btn:hover {
+        background: linear-gradient(45deg, #4299e1, #2b6cb0);
+        color: white;
+        transform: scale(1.05) translateY(-2px);
+        box-shadow: 0 8px 25px rgba(99, 179, 237, 0.35);
+    }
+
+    /* About Us Read More Button Style */
+    .about-read-more {
+        background: linear-gradient(45deg, #2b6cb0, #4299e1);
+        color: white;
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+    .about-read-more:hover {
+        background: linear-gradient(45deg, #4299e1, #2b6cb0);
+        color: white;
+        transform: scale(1.05) translateY(-2px);
+        box-shadow: 0 8px 25px rgba(99, 179, 237, 0.35);
+    }
+</style>
+
+<!-- Required JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+$(document).ready(function(){
+    // Initialize Carousel with Autoplay
+    $('.header-carousel').owlCarousel({
+        items: 1,
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        nav: true,
+        dots: false,
+        animateOut: 'fadeOut',
+        smartSpeed: 800
+    });
+
+    // Animate Stats
+    $('.stat-value').each(function() {
+        const $this = $(this);
+        const target = parseInt($this.data('target'));
+        const suffix = $this.text().includes('K+') ? 'K+' :
+                      $this.text().includes('%') ? '%' : '';
+
+        $({count: 0}).animate({count: target}, {
+            duration: 2000,
+            step: function() {
+                $this.text(Math.floor(this.count) + suffix);
+            }
+        });
+    });
+});
+</script>
+
+    <!-- About Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="d-flex flex-column">
+                        <img class="img-fluid rounded w-75 align-self-end" src="{% static 'img/about-1.jpg' %}" alt="">
+                        <img class="img-fluid rounded w-50 bg-white pt-3 pe-3" src="{% static 'img/about-2.jpg' %}" alt="" style="margin-top: -25%;">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <p class="d-inline-block border rounded-pill py-1 px-4">About Us</p>
+                    <h1 class="mb-4">Why You Should Trust Us? Get Know About Us!</h1>
+                    <p>We are committed to promoting heart health through reliable information and advanced tools. Our platform helps users understand, assess, and manage their cardiovascular risk. With a focus on prevention and early detection, we aim to make heart care accessible and effective for everyone.</p>
+                    <p class="mb-4"></p>
+                    <p><i class="far fa-check-circle text-header-color me-3"></i>Quality health care</p>
+                    <p><i class="far fa-check-circle text-header-color me-3"></i>Only Qualified Doctors</p>
+                    <p><i class="far fa-check-circle text-header-color me-3"></i>Medical Research Professionals</p>
+                    <a class="btn about-read-more rounded-pill py-3 px-5 mt-3" href="">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+    <!-- Service Start -->
+    <div id="services" class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p class="d-inline-block border rounded-pill py-1 px-4">Services</p>
+                <h1>Health Care Solutions</h1>
+            </div>
+            <div class="row g-4">
+                <div id="Cardiovascular-risk-assessment" class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                            <i class="fa fa-heartbeat text-header-color fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">Cardiovascular Risk Assessment</h4>
+                        <p class="mb-4">Comprehensive evaluation of your heart disease risk factors including family history, lifestyle, and biometric data to create a personalized prevention plan.</p>
+                        <a class="btn" href=""><i class="fa fa-plus text-header-color me-3"></i>Read More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                            <i class="fas fa-spa text-header-color fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">Heart Attack Prevention</h4>
+                        <p class="mb-4">Programs focused on lifestyle changes, medications, and risk management to prevent heart attacks.</p>
+                        <a class="btn" href=""><i class="fa fa-plus text-header-color me-3"></i>Read More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                            <i class="fas fa-vial text-header-color fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">Cardiovascular Screening</h4>
+                        <p class="mb-4">Early detection of heart disease through blood tests, ECG, and imaging for better prevention and treatment.</p>
+                        <a class="btn" href=""><i class="fa fa-plus text-header-color me-3"></i>Read More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                            <i class="fas fa-x-ray text-header-color fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">Peripheral Artery Disease Care</h4>
+                        <p class="mb-4">Diagnosis and treatment of circulation problems in limbs that may indicate wider cardiovascular issues.</p>
+                        <a class="btn" href=""><i class="fa fa-plus text-header-color me-3"></i>Read More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                            <i class="fas fa-dna text-header-color fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">Cardiac Imaging Services</h4>
+                        <p class="mb-4">State-of-the-art echocardiograms, CT scans, and MRIs to visualize heart structure and function with precision.</p>
+                        <a class="btn" href=""><i class="fa fa-plus text-header-color me-3"></i>Read More</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item bg-light rounded h-100 p-5">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-white rounded-circle mb-4" style="width: 65px; height: 65px;">
+                            <i class="fas fa-weight text-header-color fs-4"></i>
+                        </div>
+                        <h4 class="mb-3">Cardiac Rehabilitation</h4>
+                        <p class="mb-4">Recovery programs combining exercise, education, and counseling for heart patients after surgery or a heart attack.</p>
+                        <a class="btn" href=""><i class="fa fa-plus text-header-color me-3"></i>Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
+    <!-- Feature Start -->
+    <div class="container-fluid bg-gradient-primary overflow-hidden my-5 px-lg-0">
+        <div class="container feature px-lg-0">
+            <div class="row g-0 mx-lg-0">
+                <div class="col-lg-6 feature-text py-5 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="p-lg-5 ps-lg-0">
+                        <p class="d-inline-block border rounded-pill text-light py-1 px-4">Features</p>
+                        <h1 class="text-white mb-4">Why Choose Us</h1>
+                        <p class="text-white mb-4 pb-2">Our advanced machine learning algorithms analyze 150+ risk factors with 94% accuracy, detecting early warning signs most systems miss. We combine your medical history, lifestyle data, and real-time biometrics for truly personalized risk assessment.</p>
+                        <div class="row g-4">
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
+                                        <i class="fa fa-user-md text-header-color"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <p class="text-white mb-2">Experience</p>
+                                        <h5 class="text-white mb-0">Doctors</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
+                                        <i class="fa fa-check text-header-color"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <p class="text-white mb-2">Quality</p>
+                                        <h5 class="text-white mb-0">Services</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
+                                        <i class="fa fa-comment-medical text-header-color"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <p class="text-white mb-2">Positive</p>
+                                        <h5 class="text-white mb-0">Consultation</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="d-flex align-items-center">
+                                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-light" style="width: 55px; height: 55px;">
+                                        <i class="fa fa-headphones text-header-color"></i>
+                                    </div>
+                                    <div class="ms-4">
+                                        <p class="text-white mb-2">24 Hours</p>
+                                        <h5 class="text-white mb-0">Support</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 pe-lg-0 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute img-fluid w-100 h-100" src="{% static 'img/feature.jpg' %}" style="object-fit: cover;" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Feature End -->
+
+    <!-- Team Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p class="d-inline-block border rounded-pill py-1 px-4">Doctors</p>
+                <h1>Our Experience Doctors</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="team-item position-relative rounded overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="{% static 'img/d (3).jpg' %}" alt="">
+                        </div>
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>Dr. A. Sharma </h5>
+                            <p class="text-header-color">Cardiothoracic Surgeon</p>
+                            <div class="team-social text-center">
+                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f text-header-color"></i></a>
+                                <a class="btn btn-square" href=""><i class="fab fa-twitter text-header-color"></i></a>
+                                <a class="btn btn-square" href=""><i class="fab fa-instagram text-header-color"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="team-item position-relative rounded overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="{% static 'img/d (2).jpg' %}" alt="">
+                        </div>
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>Dr. R. Patel </h5>
+                            <p class="text-header-color">Interventional Cardiologist</p>
+                            <div class="team-social text-center">
+                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f text-header-color"></i></a>
+                                <a class="btn btn-square" href=""><i class="fab fa-twitter text-header-color"></i></a>
+                                <a class="btn btn-square" href=""><i class="fab fa-instagram text-header-color"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="team-item position-relative rounded overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="{% static 'img/d (1).jpg' %}" alt="">
+                        </div>
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>Dr. S. Sen </h5>
+                            <p class="text-header-color">Cardiac Electrophysiologist</p>
+                            <div class="team-social text-center">
+                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f text-header-color"></i></a>
+                                <a class="btn btn-square" href=""><i class="fab fa-twitter text-header-color"></i></a>
+                                <a class="btn btn-square" href=""><i class="fab fa-instagram text-header-color"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="team-item position-relative rounded overflow-hidden">
+                        <div class="overflow-hidden">
+                            <img class="img-fluid" src="{% static 'img/d (4).jpg' %}" alt="">
+                        </div>
+                        <div class="team-text bg-light text-center p-4">
+                            <h5>Dr. N. Reddy </h5>
+                            <p class="text-header-color">Pediatric Cardiologist</p>
+                            <div class="team-social text-center">
+                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f text-header-color"></i></a>
+                                <a class="btn btn-square" href=""><i class="fab fa-twitter text-header-color"></i></a>
+                                <a class="btn btn-square" href=""><i class="fab fa-instagram text-header-color"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+
+    <!-- Appointment Start -->
+    <div id="appointment-section" class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="d-inline-block border rounded-pill py-1 px-4">Appointment</p>
+                    <h1 class="mb-4">Make An Appointment To Visit Our Doctor</h1>
+                    <p class="mb-4">Every day without proper risk assessment increases your vulnerability. Our same-week appointments include advanced lipid testing, arterial stiffness measurement, and genetic risk analysis - all interpreted by leading cardiologists.</p>
+                    <div class="bg-light rounded d-flex align-items-center p-5 mb-4">
+                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-white" style="width: 55px; height: 55px;">
+                            <i class="fa fa-phone-alt text-header-color"></i>
+                        </div>
+                        <div class="ms-4">
+                            <p class="mb-2">Call Us Now</p>
+                            <h5 class="mb-0">+91 12 345 67890</h5>
+                        </div>
+                    </div>
+                    <div class="bg-light rounded d-flex align-items-center p-5">
+                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-white" style="width: 55px; height: 55px;">
+                            <i class="fa fa-envelope-open text-header-color"></i>
+                        </div>
+                        <div class="ms-4">
+                            <p class="mb-2">Mail Us Now</p>
+                            <h5 class="mb-0">info@klinikheart.com</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="bg-light rounded h-100 d-flex align-items-center p-5">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control border-0" placeholder="Your Name" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="email" class="form-control border-0" placeholder="Your Email" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control border-0" placeholder="Your Mobile" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <select class="form-select border-0" style="height: 55px;">
+                                        <option selected>Choose Doctor</option>
+                                        <option value="1">Dr. A. Sharma </option>
+                                        <option value="2">Dr. R. Patel</option>
+                                        <option value="3">Dr. S. Kumar</option>
+                                        <option value="3">Dr. N. Reddy</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="date" id="date" data-target-input="nearest">
+                                        <input type="text"
+                                            class="form-control border-0 datetimepicker-input"
+                                            placeholder="Choose Date" data-target="#date" data-toggle="datetimepicker" style="height: 55px;">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="time" id="time" data-target-input="nearest">
+                                        <input type="text"
+                                            class="form-control border-0 datetimepicker-input"
+                                            placeholder="Choose Time" data-target="#time" data-toggle="datetimepicker" style="height: 55px;">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="form-control border-0" rows="5" placeholder="Describe your problem"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn appointment-btn w-100 py-3" type="submit">Book Appointment</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Appointment End -->
+
+    <!-- Testimonial Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                <p class="d-inline-block border rounded-pill py-1 px-4">Testimonial</p>
+                <h1>What Say Our Patients!</h1>
+            </div>
+            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                <div class="testimonial-item text-center">
+                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="{% static 'img/testimonial-1.jpg' %}" style="width: 100px; height: 100px;">
+                    <div class="testimonial-text rounded text-center p-4">
+                        <p>"The prediction caught my heart risks 2 years before symptoms appeared. Today, I'm healthier than ever thanks to their preventive plan."</p>
+                        <h5 class="mb-1">- Neha P</h5>
+                        <span class="fst-italic">Mumbai</span>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="{% static 'img/testimonial-2.jpg' %}" style="width: 100px; height: 100px;">
+                    <div class="testimonial-text rounded text-center p-4">
+                        <p>"Their early warning system saved my life. The doctors intervened just in time to prevent my impending heart attack."</p>
+                        <h5 class="mb-1">- Vikram D.</h5>
+                        <span class="fst-italic">Delhi</span>
+                    </div>
+                </div>
+                <div class="testimonial-item text-center">
+                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="{% static 'img/testimonial-3.jpg' %}" style="width: 100px; height: 100px;">
+                    <div class="testimonial-text rounded text-center p-4">
+                        <p>"I thought I was healthy until their tests revealed hidden risks. Now I have peace of mind with proper monitoring."</p>
+                        <h5 class="mb-1">- Amit S.</h5>
+                        <span class="fst-italic">Bangalore</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
+    <!-- Inline CSS for Header Color and Replacements -->
+    <style>
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #4b6cb7, #182848);
+        }
+        .text-header-color {
+            color: #4b6cb7; /* Lighter blue from the gradient for text */
+        }
+        .btn-header-color {
+            background: linear-gradient(135deg, #4b6cb7, #182848); /* Full gradient for buttons */
+            border: none;
+            color: white;
+        }
+        .btn-header-color:hover {
+            background: linear-gradient(135deg, #182848, #4b6cb7); /* Reverse gradient on hover */
+            color: white;
+        }
+    </style>
+
+    {% include "inc/footer.html" %}
+</body>
+</html>

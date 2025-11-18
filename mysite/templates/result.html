@@ -1,0 +1,329 @@
+{% load static %}
+{% include 'inc/header.html' %}
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    {% include "inc/menu.html" %}
+
+<!-- Main Content -->
+<main class="flex-grow-1">
+    <div class="container-fluid px-0">
+        <div class="row g-0">
+            <div class="col-lg-8 mx-auto">
+                <!-- Modern Card with Glass Morphism Effect -->
+                <div class="card border-0 my-5 overflow-hidden" style="
+                    border-radius: 24px;
+                    backdrop-filter: blur(16px);
+                    background: rgba(255, 255, 255, 0.85);
+                    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+                    border: 1px solid rgba(255, 255, 255, 0.18);
+                ">
+                    <div class="card-body p-4 p-md-5">
+                        <!-- Result Header with Animated Pulse -->
+                        <div class="text-center mb-5">
+                            {% if h == 'healthy' %}
+                            <div class="alert alert-success border-0 d-inline-flex align-items-center py-3 px-4 mb-4 animate_animated animate_pulse" style="
+                                border-radius: 50px;
+                                font-size: 1.5rem;
+                                font-weight: 700;
+                                background: linear-gradient(135deg, #4CAF50 0%, #81C784 100%);
+                                color: white;
+                                box-shadow: 0 10px 20px rgba(76, 175, 80, 0.2);
+                            ">
+                                <i class="fas fa-heartbeat me-3"></i>
+                                <span>HEALTHY HEART DETECTED</span>
+                            </div>
+                            {% else %}
+                            <div class="alert alert-danger border-0 d-inline-flex align-items-center py-3 px-4 mb-4 animate_animated animate_pulse" style="
+                                border-radius: 50px;
+                                font-size: 1.5rem;
+                                font-weight: 700;
+                                background: linear-gradient(135deg, #F44336 0%, #E57373 100%);
+                                color: white;
+                                box-shadow: 0 10px 20px rgba(244, 67, 54, 0.2);
+                            ">
+                                <i class="fas fa-heartbeat me-3"></i>
+                                <span>POTENTIAL HEART ISSUES</span>
+                            </div>
+                            {% endif %}
+
+                            <!-- Animated Heart Image -->
+                            <div class="mt-4 animate_animated animate_fadeIn">
+                                <img src="/static/{{ h }}.jpg" class="img-fluid rounded-3 shadow" style="
+                                    max-height: 40vh;
+                                    width: auto;
+                                    border: 1px solid rgba(0,0,0,0.05);
+                                    transform: perspective(1000px) rotateY(0deg);
+                                    transition: transform 0.5s ease;
+                                " onmouseover="this.style.transform='perspective(1000px) rotateY(10deg)'"
+                                onmouseout="this.style.transform='perspective(1000px) rotateY(0deg)'">
+                            </div>
+                        </div>
+
+                        <!-- Modern Recommendations Section -->
+                        <div class="mt-5 p-4" style="
+                            background: rgba(255,255,255,0.6);
+                            border-radius: 20px;
+                            backdrop-filter: blur(8px);
+                            border: 1px solid rgba(255,255,255,0.2);
+                        ">
+                            <h4 class="text-center mb-4 fw-bold" style="
+                                color: #1a237e;
+                                position: relative;
+                                display: inline-block;
+                                padding-bottom: 8px;
+                            ">
+                                <i class="fas fa-lightbulb text-warning me-2"></i>
+                                <span>Your Heart Health Plan</span>
+                                <span style="
+                                    position: absolute;
+                                    bottom: 0;
+                                    left: 50%;
+                                    transform: translateX(-50%);
+                                    width: 60px;
+                                    height: 3px;
+                                    background: linear-gradient(90deg, #FFC107, #FF9800);
+                                    border-radius: 3px;
+                                "></span>
+                            </h4>
+
+                            <!-- Modern Recommendation Cards -->
+                            <div class="row g-4 mt-3">
+                                <div class="col-md-4">
+                                    <div class="recommendation-card h-100 animate_animated animate_fadeInUp" style="
+                                        background: white;
+                                        border-radius: 16px;
+                                        padding: 24px;
+                                        box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+                                        border-left: 4px solid #4CAF50;
+                                        transition: transform 0.3s, box-shadow 0.3s;
+                                    " onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 20px rgba(0,0,0,0.1)'"
+                                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 15px rgba(0,0,0,0.05)'">
+                                        <div class="icon-wrapper mb-3" style="
+                                            width: 50px;
+                                            height: 50px;
+                                            border-radius: 12px;
+                                            background: rgba(76, 175, 80, 0.1);
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                        ">
+                                            <i class="fas fa-heartbeat text-success" style="font-size: 1.5rem;"></i>
+                                        </div>
+                                        <h5 class="fw-bold mb-3">Monitor Vital Signs</h5>
+                                        <p class="text-muted">Check blood pressure and cholesterol levels regularly to maintain optimal heart health.</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="recommendation-card h-100 animate_animated animatefadeInUp animate_delay-1s" style="
+                                        background: white;
+                                        border-radius: 16px;
+                                        padding: 24px;
+                                        box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+                                        border-left: 4px solid #2196F3;
+                                        transition: transform 0.3s, box-shadow 0.3s;
+                                    " onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 20px rgba(0,0,0,0.1)'"
+                                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 15px rgba(0,0,0,0.05)'">
+                                        <div class="icon-wrapper mb-3" style="
+                                            width: 50px;
+                                            height: 50px;
+                                            border-radius: 12px;
+                                            background: rgba(33, 150, 243, 0.1);
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                        ">
+                                            <i class="fas fa-weight text-primary" style="font-size: 1.5rem;"></i>
+                                        </div>
+                                        <h5 class="fw-bold mb-3">Healthy Weight</h5>
+                                        <p class="text-muted">Maintain a BMI between 18.5-24.9 through balanced nutrition and regular activity.</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="recommendation-card h-100 animate_animated animatefadeInUp animate_delay-2s" style="
+                                        background: white;
+                                        border-radius: 16px;
+                                        padding: 24px;
+                                        box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+                                        border-left: 4px solid #9C27B0;
+                                        transition: transform 0.3s, box-shadow 0.3s;
+                                    " onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 20px rgba(0,0,0,0.1)'"
+                                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 15px rgba(0,0,0,0.05)'">
+                                        <div class="icon-wrapper mb-3" style="
+                                            width: 50px;
+                                            height: 50px;
+                                            border-radius: 12px;
+                                            background: rgba(156, 39, 176, 0.1);
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                        ">
+                                            <i class="fas fa-bed text-purple" style="font-size: 1.5rem;"></i>
+                                        </div>
+                                        <h5 class="fw-bold mb-3">Quality Sleep</h5>
+                                        <p class="text-muted">Aim for 7-9 hours of uninterrupted sleep nightly to support cardiovascular health.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Additional Heart Health Features -->
+                            <div class="row mt-5">
+                                <div class="col-md-6 mb-4">
+                                    <div class="feature-card p-4 h-100" style="
+                                        background: white;
+                                        border-radius: 16px;
+                                        box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+                                        border-top: 4px solid #FF5722;
+                                        transition: all 0.3s ease;
+                                    " onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 20px rgba(0,0,0,0.1)'"
+                                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 15px rgba(0,0,0,0.05)'">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="icon-wrapper me-3" style="
+                                                width: 40px;
+                                                height: 40px;
+                                                border-radius: 10px;
+                                                background: rgba(255, 87, 34, 0.1);
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                            ">
+                                                <i class="fas fa-heart text-danger" style="font-size: 1.2rem;"></i>
+                                            </div>
+                                            <h5 class="mb-0 fw-bold">Heart Rate Zones</h5>
+                                        </div>
+                                        <div class="progress mb-2" style="height: 10px; border-radius: 5px;">
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-info" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <small class="text-muted d-block mb-2">Your optimal exercise heart rate: <strong>120-150 bpm</strong></small>
+                                        <small class="text-muted">Different zones provide different cardiovascular benefits.</small>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 mb-4">
+                                    <div class="feature-card p-4 h-100" style="
+                                        background: white;
+                                        border-radius: 16px;
+                                        box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+                                        border-top: 4px solid #009688;
+                                        transition: all 0.3s ease;
+                                    " onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 12px 20px rgba(0,0,0,0.1)'"
+                                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 15px rgba(0,0,0,0.05)'">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <div class="icon-wrapper me-3" style="
+                                                width: 40px;
+                                                height: 40px;
+                                                border-radius: 10px;
+                                                background: rgba(0, 150, 136, 0.1);
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: center;
+                                            ">
+                                                <i class="fas fa-apple-alt text-teal" style="font-size: 1.2rem;"></i>
+                                            </div>
+                                            <h5 class="mb-0 fw-bold">Heart-Healthy Foods</h5>
+                                        </div>
+                                        <div class="d-flex flex-wrap">
+                                            <span class="badge bg-light text-dark me-2 mb-2" style="border-radius: 20px; padding: 5px 10px;">
+                                                <i class="fas fa-fish me-1 text-primary"></i> Fatty Fish
+                                            </span>
+                                            <span class="badge bg-light text-dark me-2 mb-2" style="border-radius: 20px; padding: 5px 10px;">
+                                                <i class="fas fa-seedling me-1 text-success"></i> Nuts
+                                            </span>
+                                            <span class="badge bg-light text-dark me-2 mb-2" style="border-radius: 20px; padding: 5px 10px;">
+                                                <i class="fas fa-leaf me-1 text-success"></i> Leafy Greens
+                                            </span>
+                                            <span class="badge bg-light text-dark me-2 mb-2" style="border-radius: 20px; padding: 5px 10px;">
+                                                <i class="fas fa-wheat-alt me-1 text-warning"></i> Whole Grains
+                                            </span>
+                                            <span class="badge bg-light text-dark me-2 mb-2" style="border-radius: 20px; padding: 5px 10px;">
+                                                <i class="fas fa-egg me-1 text-info"></i> Eggs
+                                            </span>
+                                            <span class="badge bg-light text-dark mb-2" style="border-radius: 20px; padding: 5px 10px;">
+                                                <i class="fas fa-wine-bottle me-1 text-danger"></i> Olive Oil
+                                            </span>
+                                        </div>
+                                        <small class="text-muted mt-2 d-block">Incorporate these foods into your diet for better heart health.</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Modern Style CSS -->
+<style>
+    /* Base Styles */
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+    }
+
+    /* Animation Classes */
+    .animate__animated {
+        animation-duration: 1s;
+    }
+
+    /* Card Hover Effects */
+    .recommendation-card:hover, .feature-card:hover {
+        transform: translateY(-8px) !important;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+    }
+
+    /* Progress Bar Colors */
+    .bg-success { background-color: #4CAF50 !important; }
+    .bg-info { background-color: #2196F3 !important; }
+    .bg-warning { background-color: #FFC107 !important; }
+    .bg-danger { background-color: #F44336 !important; }
+
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+        .card {
+            border-radius: 0 !important;
+        }
+
+        .recommendation-card, .feature-card {
+            margin-bottom: 20px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .alert {
+            font-size: 1.2rem !important;
+            padding: 0.75rem 1.5rem !important;
+        }
+
+        img {
+            max-height: 30vh !important;
+        }
+    }
+</style>
+
+<!-- Required Libraries -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+{% include "inc/footer.html" %}
+
+<script>
+    window.addEventListener('load', function() {
+        document.getElementById('spinner').style.display = 'none';
+    });
+</script>
+</body>
+</html>
